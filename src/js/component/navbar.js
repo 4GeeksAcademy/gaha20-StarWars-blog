@@ -3,20 +3,21 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+		<nav className="navbar navbar-light bg-dark mb-3">
+			<Link to="/" title="Image from freepnglogos.com">
+				<img src="https://www.freepnglogos.com/uploads/star-wars-logo-33.png" width="80" alt="star wars logo" />
 			</Link>
 			<div className="ml-auto">
-				<div class="dropdown">
-					<a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+				<div className="dropdown">
+					<a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
 						Favorites
+						<i className="fa-solid fa-book-journal-whills p-3"></i>
 					</a>
 
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						<li><a class="dropdown-item" href="#">Action</a></li>
-						<li><a class="dropdown-item" href="#">Another action</a></li>
-						<li><a class="dropdown-item" href="#">Something else here</a></li>
+					<ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+						<li><a className="dropdown-item" href="#">Action</a></li>
+						<li><a className="dropdown-item" href="#">Another action</a></li>
+						<li><a className="dropdown-item" href="#">Something else here</a></li>
 					</ul>
 				</div>
 			</div>
