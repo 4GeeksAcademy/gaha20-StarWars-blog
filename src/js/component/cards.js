@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Cards = (props) => {
     console.log(props.item.uid)
+    const { store, actions } = useContext(Context)
     const { name, gender, hair_color, eye_color } = props.item.properties
     return (
         <div className="card bg-dark" style={{ minWidth: "18rem" }}>
@@ -14,9 +16,14 @@ export const Cards = (props) => {
                 <p className="card-text">Eyes Color: {eye_color}</p>
                 <div className="d-flex justify-content-between">
                     <Link to={`/learnMore/characters/${props.item.uid}`} className="btn btn-secondary">Learn more!!</Link>
-                    <Link to="#" className="btn btn-secondary favorite"><i className="fa-solid fa-book-journal-whills"></i></Link>
+                    <button className="btn btn-secondary favorite"
+                        onClick={() => {
+                            actions.setFavorites(name, props.item.uid)
+                            console.log(name)
+                        }}
+                    ><i className="fa-solid fa-book-journal-whills"></i></button>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

@@ -1,9 +1,11 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
+
 		store: {
 			characters: [],
 			planets: [],
 			details: {},
+			favorites: [],
 			API_URL: "https://www.swapi.tech/api"
 
 			// demo: [
@@ -71,8 +73,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 				setStore({ ...store, details: details[0] ? details[0] : {} })
 
-			}
-
+			},
+			setFavorites: (itemName, itemId) => {
+				const store = getStore()
+				const favorites = [...store.favorites, [itemName, itemId]]
+				setStore({ favorites })
+				console.log("ejecucion del setFavorites", favorites)
+			},
 
 			// // Use getActions to call a function within a fuction
 			// exampleFunction: () => {
@@ -100,5 +107,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 		}
 	};
 };
+
 
 export default getState;
