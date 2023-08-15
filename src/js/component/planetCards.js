@@ -1,8 +1,10 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const PlanetCards = (props) => {
     console.log(props.item.uid)
+    const { store, actions } = useContext(Context)
     const { name, population, terrain } = props.item.properties
     return (
         <Fragment>
@@ -18,7 +20,12 @@ export const PlanetCards = (props) => {
                     <p className="card-text">Terrain: {terrain}</p>
                     <div className="d-flex justify-content-between">
                         <Link to={`/learnMore/planets/${props.item.uid}`} className="btn btn-secondary">Learn more!!</Link>
-                        <Link to="#" className="btn btn-secondary favorite"><i className="fa-solid fa-book-journal-whills"></i></Link>
+                        <button className="btn btn-secondary favorite"
+                            onClick={() => {
+                                actions.setFavorites(name, props.item.uid, "planets")
+                                console.log(name)
+                            }}
+                        ><i className="fa-solid fa-book-journal-whills"></i></button>
                     </div>
                 </div>
             </div>

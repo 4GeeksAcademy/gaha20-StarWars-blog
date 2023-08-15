@@ -18,7 +18,7 @@ export const Cards = (props) => {
                     <Link to={`/learnMore/characters/${props.item.uid}`} className="btn btn-secondary">Learn more!!</Link>
                     <button className="btn btn-secondary favorite"
                         onClick={() => {
-                            actions.setFavorites(name, props.item.uid)
+                            actions.setFavorites(name, props.item.uid, "characters")
                             console.log(name)
                         }}
                     ><i className="fa-solid fa-book-journal-whills"></i></button>

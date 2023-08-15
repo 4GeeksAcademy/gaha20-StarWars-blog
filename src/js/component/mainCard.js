@@ -7,7 +7,7 @@ export const MainCard = (props) => {
     const { store, actions } = useContext(Context)
     useEffect(() => {
         actions.getDetailed(params.group, params.id)
-    }, [store[params.group]])
+    }, [store[params.group], params.id])
 
     if (params.group == "planets" && store.details["properties"]) {
         return (

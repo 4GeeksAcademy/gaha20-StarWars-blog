@@ -74,12 +74,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ ...store, details: details[0] ? details[0] : {} })
 
 			},
-			setFavorites: (itemName, itemId) => {
+			setFavorites: (itemName, itemId, itemGroup) => {
 				const store = getStore()
-				const favorites = [...store.favorites, [itemName, itemId]]
+				const favorites = [...store.favorites, { itemName, itemId, itemGroup }]
 				setStore({ favorites })
 				console.log("ejecucion del setFavorites", favorites)
 			},
+			deleteFavorite: (itemName) => {
+				let store = getStore()
+				let filterFavorites = store.favorites.filter((favorite) => {
+					return favorite.itemName != itemName
+				})
+				console.log(filterFavorites)
+				setStore({ favorites: filterFavorites })
+			}
 
 			// // Use getActions to call a function within a fuction
 			// exampleFunction: () => {

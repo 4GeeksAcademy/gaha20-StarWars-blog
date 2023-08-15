@@ -12,16 +12,21 @@ export const Navbar = () => {
 			</Link>
 			<div className="ml-auto">
 				<div className="dropdown">
-					<a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-						Favorites
+					<a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+						Favorites {store.favorites.length == 0 ? "" : store.favorites.length}
 						<i className="fa-solid fa-book-journal-whills p-3"></i>
 					</a>
 
-					<ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-						{store.favorites.map(([itemName, itemId]) => {
+					<ul className="dropdown-menu dropdown-menu-end dropdown-menu-lg-start dropdown-menu-dark" aria-labelledby="dropdownMenuLink">
+						{store.favorites.map(({ itemName, itemId, itemGroup }) => {
 							return (
-								<li key={itemId}>
-									<Link to={`/learnMore/characters/${itemId}`} className="dropdown-item">{itemName}</Link>
+								<li className="d-flex" key={itemId}>
+									<Link to={`/learnMore/${itemGroup}/${itemId}`} className="dropdown-item">{itemName}</Link>
+									<i className="fa-solid fa-xmark m-2"
+										onClick={() => {
+											actions.deleteFavorite(itemName)
+										}}
+									></i>
 								</li>
 							)
 						})}
